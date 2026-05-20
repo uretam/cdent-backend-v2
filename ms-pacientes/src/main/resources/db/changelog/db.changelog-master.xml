@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="1-create-pacientes" author="cdent">
+        <createTable tableName="pacientes">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nombre" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="apellido" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="correo" type="VARCHAR(150)">
+                <constraints unique="true"/>
+            </column>
+            <column name="telefono" type="VARCHAR(20)"/>
+            <column name="fecha_nacimiento" type="DATE"/>
+            <column name="direccion" type="VARCHAR(255)"/>
+            <column name="fecha_creacion" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2-insert-pacientes" author="cdent">
+        <insert tableName="pacientes">
+            <column name="nombre" value="María"/>
+            <column name="apellido" value="García López"/>
+            <column name="correo" value="maria.garcia@email.com"/>
+            <column name="telefono" value="555-0101"/>
+            <column name="fecha_nacimiento" value="1985-03-15"/>
+            <column name="direccion" value="Calle Reforma 123, CDMX"/>
+        </insert>
+        <insert tableName="pacientes">
+            <column name="nombre" value="José"/>
+            <column name="apellido" value="Hernández Ruiz"/>
+            <column name="correo" value="jose.hernandez@email.com"/>
+            <column name="telefono" value="555-0102"/>
+            <column name="fecha_nacimiento" value="1990-07-22"/>
+            <column name="direccion" value="Av. Insurgentes 456, CDMX"/>
+        </insert>
+        <insert tableName="pacientes">
+            <column name="nombre" value="Ana"/>
+            <column name="apellido" value="Martínez Soto"/>
+            <column name="correo" value="ana.martinez@email.com"/>
+            <column name="telefono" value="555-0103"/>
+            <column name="fecha_nacimiento" value="1978-11-08"/>
+            <column name="direccion" value="Calle Juárez 78, Guadalajara"/>
+        </insert>
+        <insert tableName="pacientes">
+            <column name="nombre" value="Carlos"/>
+            <column name="apellido" value="Rodríguez Vega"/>
+            <column name="correo" value="carlos.rodriguez@email.com"/>
+            <column name="telefono" value="555-0104"/>
+            <column name="fecha_nacimiento" value="1995-01-30"/>
+            <column name="direccion" value="Blvd. López Mateos 900, Monterrey"/>
+        </insert>
+        <insert tableName="pacientes">
+            <column name="nombre" value="Laura"/>
+            <column name="apellido" value="Fernández Díaz"/>
+            <column name="correo" value="laura.fernandez@email.com"/>
+            <column name="telefono" value="555-0105"/>
+            <column name="fecha_nacimiento" value="1988-05-12"/>
+            <column name="direccion" value="Calle Morelos 34, Puebla"/>
+        </insert>
+        <insert tableName="pacientes">
+            <column name="nombre" value="Miguel"/>
+            <column name="apellido" value="Torres Campos"/>
+            <column name="correo" value="miguel.torres@email.com"/>
+            <column name="telefono" value="555-0106"/>
+            <column name="fecha_nacimiento" value="1982-09-25"/>
+            <column name="direccion" value="Av. Universidad 200, Querétaro"/>
+        </insert>
+        <insert tableName="pacientes">
+            <column name="nombre" value="Sofía"/>
+            <column name="apellido" value="Ramírez Ortega"/>
+            <column name="correo" value="sofia.ramirez@email.com"/>
+            <column name="telefono" value="555-0107"/>
+            <column name="fecha_nacimiento" value="2000-12-03"/>
+            <column name="direccion" value="Calle Hidalgo 56, Mérida"/>
+        </insert>
+        <insert tableName="pacientes">
+            <column name="nombre" value="Diego"/>
+            <column name="apellido" value="Morales Pineda"/>
+            <column name="correo" value="diego.morales@email.com"/>
+            <column name="telefono" value="555-0108"/>
+            <column name="fecha_nacimiento" value="1993-04-18"/>
+            <column name="direccion" value="Av. Revolución 1120, Tijuana"/>
+        </insert>
+        <insert tableName="pacientes">
+            <column name="nombre" value="Valentina"/>
+            <column name="apellido" value="Castillo Núñez"/>
+            <column name="correo" value="valentina.castillo@email.com"/>
+            <column name="telefono" value="555-0109"/>
+            <column name="fecha_nacimiento" value="1997-08-07"/>
+            <column name="direccion" value="Calle 5 de Mayo 45, Oaxaca"/>
+        </insert>
+        <insert tableName="pacientes">
+            <column name="nombre" value="Roberto"/>
+            <column name="apellido" value="Vargas Méndez"/>
+            <column name="correo" value="roberto.vargas@email.com"/>
+            <column name="telefono" value="555-0110"/>
+            <column name="fecha_nacimiento" value="1975-06-14"/>
+            <column name="direccion" value="Av. Constitución 300, León"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

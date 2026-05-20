@@ -1,0 +1,25 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: ms-citas
+  datasource:
+    url: jdbc:mysql://localhost:3306/dental_citas?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+logging:
+  level:
+    com.cdent.citas: DEBUG

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="1-create-citas" author="cdent">
+        <createTable tableName="citas">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="paciente_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="odontologo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fecha_cita" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estado" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="notas" type="VARCHAR(500)"/>
+            <column name="fecha_creacion" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2-create-detalles-cita" author="cdent">
+        <createTable tableName="detalles_cita">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cita_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tratamiento_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cantidad" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="precio_unitario" type="DECIMAL(12,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subtotal" type="DECIMAL(12,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="notas" type="VARCHAR(255)"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="detalles_cita" baseColumnNames="cita_id"
+                                 referencedTableName="citas" referencedColumnNames="id"
+                                 constraintName="fk_detalle_cita" onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="3-insert-citas-detalles" author="cdent">
+        <insert tableName="citas">
+            <column name="paciente_id" valueNumeric="1"/>
+            <column name="odontologo_id" valueNumeric="1"/>
+            <column name="fecha_cita" value="2026-01-10 09:00:00"/>
+            <column name="estado" value="PROGRAMADA"/>
+            <column name="notas" value="Primera consulta"/>
+        </insert>
+        <insert tableName="detalles_cita">
+            <column name="cita_id" valueNumeric="1"/>
+            <column name="tratamiento_id" valueNumeric="1"/>
+            <column name="cantidad" valueNumeric="1"/>
+            <column name="precio_unitario" valueNumeric="75.00"/>
+            <column name="subtotal" valueNumeric="75.00"/>
+        </insert>
+
+        <insert tableName="citas">
+            <column name="paciente_id" valueNumeric="2"/>
+            <column name="odontologo_id" valueNumeric="2"/>
+            <column name="fecha_cita" value="2026-01-11 10:30:00"/>
+            <column name="estado" value="PROGRAMADA"/>
+        </insert>
+        <insert tableName="detalles_cita">
+            <column name="cita_id" valueNumeric="2"/>
+            <column name="tratamiento_id" valueNumeric="2"/>
+            <column name="cantidad" valueNumeric="1"/>
+            <column name="precio_unitario" valueNumeric="120.00"/>
+            <column name="subtotal" valueNumeric="120.00"/>
+        </insert>
+
+        <insert tableName="citas">
+            <column name="paciente_id" valueNumeric="3"/>
+            <column name="odontologo_id" valueNumeric="1"/>
+            <column name="fecha_cita" value="2026-01-12 11:00:00"/>
+            <column name="estado" value="COMPLETADA"/>
+        </insert>
+        <insert tableName="detalles_cita">
+            <column name="cita_id" valueNumeric="3"/>
+            <column name="tratamiento_id" valueNumeric="3"/>
+            <column name="cantidad" valueNumeric="2"/>
+            <column name="precio_unitario" valueNumeric="85.00"/>
+            <column name="subtotal" valueNumeric="170.00"/>
+        </insert>
+
+        <insert tableName="citas">
+            <column name="paciente_id" valueNumeric="4"/>
+            <column name="odontologo_id" valueNumeric="3"/>
+            <column name="fecha_cita" value="2026-01-13 14:00:00"/>
+            <column name="estado" value="PROGRAMADA"/>
+        </insert>
+        <insert tableName="detalles_cita">
+            <column name="cita_id" valueNumeric="4"/>
+            <column name="tratamiento_id" valueNumeric="4"/>
+            <column name="cantidad" valueNumeric="1"/>
+            <column name="precio_unitario" valueNumeric="250.00"/>
+            <column name="subtotal" valueNumeric="250.00"/>
+        </insert>
+
+        <insert tableName="citas">
+            <column name="paciente_id" valueNumeric="5"/>
+            <column name="odontologo_id" valueNumeric="2"/>
+            <column name="fecha_cita" value="2026-01-14 08:30:00"/>
+            <column name="estado" value="CANCELADA"/>
+            <column name="notas" value="Cancelada por el paciente"/>
+        </insert>
+        <insert tableName="detalles_cita">
+            <column name="cita_id" valueNumeric="5"/>
+            <column name="tratamiento_id" valueNumeric="1"/>
+            <column name="cantidad" valueNumeric="1"/>
+            <column name="precio_unitario" valueNumeric="75.00"/>
+            <column name="subtotal" valueNumeric="75.00"/>
+        </insert>
+
+        <insert tableName="citas">
+            <column name="paciente_id" valueNumeric="6"/>
+            <column name="odontologo_id" valueNumeric="4"/>
+            <column name="fecha_cita" value="2026-01-15 16:00:00"/>
+            <column name="estado" value="PROGRAMADA"/>
+        </insert>
+        <insert tableName="detalles_cita">
+            <column name="cita_id" valueNumeric="6"/>
+            <column name="tratamiento_id" valueNumeric="5"/>
+            <column name="cantidad" valueNumeric="1"/>
+            <column name="precio_unitario" valueNumeric="1500.00"/>
+            <column name="subtotal" valueNumeric="1500.00"/>
+        </insert>
+
+        <insert tableName="citas">
+            <column name="paciente_id" valueNumeric="7"/>
+            <column name="odontologo_id" valueNumeric="5"/>
+            <column name="fecha_cita" value="2026-01-16 09:45:00"/>
+            <column name="estado" value="COMPLETADA"/>
+        </insert>
+        <insert tableName="detalles_cita">
+            <column name="cita_id" valueNumeric="7"/>
+            <column name="tratamiento_id" valueNumeric="6"/>
+            <column name="cantidad" valueNumeric="1"/>
+            <column name="precio_unitario" valueNumeric="350.00"/>
+            <column name="subtotal" valueNumeric="350.00"/>
+        </insert>
+
+        <insert tableName="citas">
+            <column name="paciente_id" valueNumeric="8"/>
+            <column name="odontologo_id" valueNumeric="1"/>
+            <column name="fecha_cita" value="2026-01-17 12:00:00"/>
+            <column name="estado" value="PROGRAMADA"/>
+        </insert>
+        <insert tableName="detalles_cita">
+            <column name="cita_id" valueNumeric="8"/>
+            <column name="tratamiento_id" valueNumeric="7"/>
+            <column name="cantidad" valueNumeric="3"/>
+            <column name="precio_unitario" valueNumeric="45.00"/>
+            <column name="subtotal" valueNumeric="135.00"/>
+        </insert>
+
+        <insert tableName="citas">
+            <column name="paciente_id" valueNumeric="9"/>
+            <column name="odontologo_id" valueNumeric="3"/>
+            <column name="fecha_cita" value="2026-01-18 15:30:00"/>
+            <column name="estado" value="PROGRAMADA"/>
+        </insert>
+        <insert tableName="detalles_cita">
+            <column name="cita_id" valueNumeric="9"/>
+            <column name="tratamiento_id" valueNumeric="8"/>
+            <column name="cantidad" valueNumeric="1"/>
+            <column name="precio_unitario" valueNumeric="200.00"/>
+            <column name="subtotal" valueNumeric="200.00"/>
+        </insert>
+
+        <insert tableName="citas">
+            <column name="paciente_id" valueNumeric="10"/>
+            <column name="odontologo_id" valueNumeric="2"/>
+            <column name="fecha_cita" value="2026-01-19 17:00:00"/>
+            <column name="estado" value="COMPLETADA"/>
+        </insert>
+        <insert tableName="detalles_cita">
+            <column name="cita_id" valueNumeric="10"/>
+            <column name="tratamiento_id" valueNumeric="9"/>
+            <column name="cantidad" valueNumeric="2"/>
+            <column name="precio_unitario" valueNumeric="95.00"/>
+            <column name="subtotal" valueNumeric="190.00"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

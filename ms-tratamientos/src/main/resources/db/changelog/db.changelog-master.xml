@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="1-create-treatments" author="cdent">
+        <createTable tableName="treatments">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nombre" type="VARCHAR(150)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descripcion" type="VARCHAR(500)"/>
+            <column name="precio" type="DECIMAL(12,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="duracion_minutes" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="categoria" type="VARCHAR(100)"/>
+            <column name="activo" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fecha_creacion" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2-insert-tratamientos" author="cdent">
+        <insert tableName="treatments">
+            <column name="nombre" value="Limpieza dental"/>
+            <column name="descripcion" value="Profilaxis y eliminación de placa"/>
+            <column name="precio" valueNumeric="75.00"/>
+            <column name="duracion_minutes" valueNumeric="45"/>
+            <column name="categoria" value="Preventivo"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="treatments">
+            <column name="nombre" value="Extracción simple"/>
+            <column name="descripcion" value="Extracción de pieza dental"/>
+            <column name="precio" valueNumeric="120.00"/>
+            <column name="duracion_minutes" valueNumeric="60"/>
+            <column name="categoria" value="Cirugía"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="treatments">
+            <column name="nombre" value="Resina dental"/>
+            <column name="descripcion" value="Restauración con resina compuesta"/>
+            <column name="precio" valueNumeric="85.00"/>
+            <column name="duracion_minutes" valueNumeric="50"/>
+            <column name="categoria" value="Restaurativo"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="treatments">
+            <column name="nombre" value="Blanqueamiento"/>
+            <column name="descripcion" value="Blanqueamiento dental en consultorio"/>
+            <column name="precio" valueNumeric="250.00"/>
+            <column name="duracion_minutes" valueNumeric="90"/>
+            <column name="categoria" value="Estético"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="treatments">
+            <column name="nombre" value="Implante dental"/>
+            <column name="descripcion" value="Colocación de implante osteointegrado"/>
+            <column name="precio" valueNumeric="1500.00"/>
+            <column name="duracion_minutes" valueNumeric="120"/>
+            <column name="categoria" value="Implantología"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="treatments">
+            <column name="nombre" value="Endodoncia"/>
+            <column name="descripcion" value="Tratamiento de conducto"/>
+            <column name="precio" valueNumeric="350.00"/>
+            <column name="duracion_minutes" valueNumeric="90"/>
+            <column name="categoria" value="Endodoncia"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="treatments">
+            <column name="nombre" value="Radiografía panorámica"/>
+            <column name="descripcion" value="Estudio radiográfico completo"/>
+            <column name="precio" valueNumeric="45.00"/>
+            <column name="duracion_minutes" valueNumeric="15"/>
+            <column name="categoria" value="Diagnóstico"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="treatments">
+            <column name="nombre" value="Corona de porcelana"/>
+            <column name="descripcion" value="Corona protésica individual"/>
+            <column name="precio" valueNumeric="200.00"/>
+            <column name="duracion_minutes" valueNumeric="75"/>
+            <column name="categoria" value="Protésico"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="treatments">
+            <column name="nombre" value="Ortodoncia mensual"/>
+            <column name="descripcion" value="Control y ajuste de brackets"/>
+            <column name="precio" valueNumeric="95.00"/>
+            <column name="duracion_minutes" valueNumeric="30"/>
+            <column name="categoria" value="Ortodoncia"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="treatments">
+            <column name="nombre" value="Fluorización"/>
+            <column name="descripcion" value="Aplicación tópica de flúor"/>
+            <column name="precio" valueNumeric="35.00"/>
+            <column name="duracion_minutes" valueNumeric="20"/>
+            <column name="categoria" value="Preventivo"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

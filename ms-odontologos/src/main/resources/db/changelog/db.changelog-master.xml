@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="1-create-odontologos" author="cdent">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="odontologos"/>
+            </not>
+        </preConditions>
+        <createTable tableName="odontologos">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nombre" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="apellido" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="correo" type="VARCHAR(150)">
+                <constraints unique="true"/>
+            </column>
+            <column name="especialidad" type="VARCHAR(100)"/>
+            <column name="numero_licencia" type="VARCHAR(50)">
+                <constraints unique="true"/>
+            </column>
+            <column name="telefono" type="VARCHAR(20)"/>
+            <column name="activo" type="BOOLEAN" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fecha_creacion" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2-insert-odontologos" author="cdent">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">SELECT COUNT(*) FROM odontologos</sqlCheck>
+        </preConditions>
+        <insert tableName="odontologos">
+            <column name="nombre" value="Elena"/>
+            <column name="apellido" value="Ríos Mendoza"/>
+            <column name="correo" value="elena.rios@cdent.com"/>
+            <column name="especialidad" value="Ortodoncia"/>
+            <column name="numero_licencia" value="OD-ORT-001"/>
+            <column name="telefono" value="555-1001"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="odontologos">
+            <column name="nombre" value="Fernando"/>
+            <column name="apellido" value="Salazar Luna"/>
+            <column name="correo" value="fernando.salazar@cdent.com"/>
+            <column name="especialidad" value="Endodoncia"/>
+            <column name="numero_licencia" value="OD-END-002"/>
+            <column name="telefono" value="555-1002"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="odontologos">
+            <column name="nombre" value="Patricia"/>
+            <column name="apellido" value="Guzmán Vera"/>
+            <column name="correo" value="patricia.guzman@cdent.com"/>
+            <column name="especialidad" value="Cirugía Maxilofacial"/>
+            <column name="numero_licencia" value="OD-MAX-003"/>
+            <column name="telefono" value="555-1003"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="odontologos">
+            <column name="nombre" value="Ricardo"/>
+            <column name="apellido" value="Navarro Ponce"/>
+            <column name="correo" value="ricardo.navarro@cdent.com"/>
+            <column name="especialidad" value="Periodoncia"/>
+            <column name="numero_licencia" value="OD-PER-004"/>
+            <column name="telefono" value="555-1004"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+        <insert tableName="odontologos">
+            <column name="nombre" value="Gabriela"/>
+            <column name="apellido" value="Mejía Cruz"/>
+            <column name="correo" value="gabriela.mejia@cdent.com"/>
+            <column name="especialidad" value="Odontopediatría"/>
+            <column name="numero_licencia" value="OD-PED-005"/>
+            <column name="telefono" value="555-1005"/>
+            <column name="activo" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

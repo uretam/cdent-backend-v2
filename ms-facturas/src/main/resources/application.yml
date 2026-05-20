@@ -1,0 +1,23 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: ms-facturas
+  datasource:
+    url: jdbc:mysql://localhost:3306/dental_facturas?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+logging:
+  level:
+    com.cdent.facturas: DEBUG

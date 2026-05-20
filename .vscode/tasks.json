@@ -1,0 +1,100 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "1. Iniciar ms-pacientes",
+            "type": "shell",
+            "command": "mvnw spring-boot:run",
+            "windows": {
+                "command": ".\\mvnw.cmd spring-boot:run"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/ms-pacientes"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "2. Iniciar ms-odontologos",
+            "type": "shell",
+            "command": "mvnw spring-boot:run",
+            "windows": {
+                "command": ".\\mvnw.cmd spring-boot:run"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/ms-odontologos"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "3. Iniciar ms-tratamientos",
+            "type": "shell",
+            "command": "mvnw spring-boot:run",
+            "windows": {
+                "command": ".\\mvnw.cmd spring-boot:run"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/ms-tratamientos"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "4. Iniciar ms-citas",
+            "type": "shell",
+            "command": "mvnw spring-boot:run",
+            "windows": {
+                "command": ".\\mvnw.cmd spring-boot:run"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/ms-citas"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "5. Iniciar ms-facturas",
+            "type": "shell",
+            "command": "mvnw spring-boot:run",
+            "windows": {
+                "command": ".\\mvnw.cmd spring-boot:run"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/ms-facturas"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "6. Iniciar api-gateway",
+            "type": "shell",
+            "command": "mvnw spring-boot:run",
+            "windows": {
+                "command": ".\\mvnw.cmd spring-boot:run"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/api-gateway"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "🚀 ARRANCAR TODO EL BACKEND",
+            "dependsOrder": "parallel",
+            "dependsOn": [
+                "1. Iniciar ms-pacientes",
+                "2. Iniciar ms-odontologos",
+                "3. Iniciar ms-tratamientos",
+                "4. Iniciar ms-citas",
+                "5. Iniciar ms-facturas",
+                "6. Iniciar api-gateway"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

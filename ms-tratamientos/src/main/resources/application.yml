@@ -1,0 +1,16 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: ms-tratamientos
+  datasource:
+    url: jdbc:mysql://localhost:3306/dental_tratamientos?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml

@@ -1,0 +1,16 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: ms-pacientes
+  datasource:
+    url: jdbc:mysql://localhost:3306/dental_pacientes?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
