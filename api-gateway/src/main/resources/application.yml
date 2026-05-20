@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 9080
 spring:
   application:
     name: api-gateway
@@ -7,23 +7,23 @@ spring:
     gateway:
       routes:
         - id: ms-pacientes
-          uri: http://localhost:8081
+          uri: http://localhost:9081
           predicates:
             - Path=/api/pacientes/**
         - id: ms-citas
-          uri: http://localhost:8082
+          uri: http://localhost:9082
           predicates:
             - Path=/api/citas/**
         - id: ms-odontologos
-          uri: http://localhost:8083
+          uri: http://localhost:9083
           predicates:
             - Path=/api/odontologos/**
         - id: ms-tratamientos
-          uri: http://localhost:8084
+          uri: http://localhost:9084
           predicates:
             - Path=/api/tratamientos/**
         - id: ms-facturas
-          uri: http://localhost:8085
+          uri: http://localhost:9085
           predicates:
             - Path=/api/facturas/**
       globalcors:
